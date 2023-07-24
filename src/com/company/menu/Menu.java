@@ -49,6 +49,7 @@ public class Menu {
                     printContact();
                 }
                 case "6" -> {
+                    searchContact();
                 }
                 case "7" -> {
                 }
@@ -120,6 +121,15 @@ public class Menu {
             }
         }
     }
+
+    private void searchContact (){
+        System.out.println("Введите имя для поиска");
+        String name = scanner.nextLine();
+        phoneBook.searchContact(name);
+    }
+
+
+
 
 }
 

@@ -39,4 +39,15 @@ public class PhoneBook {
        contacts = new Contact[contacts.length];
        System.out.println("Список контактов очищен");
    }
+
+   public void searchContact (String name){
+       for (int i = 0; i < contacts.length; i++) {
+           if (contacts[i] != null){
+               if (contacts[i].getName().equals(name)){
+                   System.out.println(contacts[i]);
+               }
+           }
+       }
+
+   }
 }

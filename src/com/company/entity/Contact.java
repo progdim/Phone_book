@@ -50,4 +50,9 @@ public class Contact {
     public void info (){
         System.out.println("id:"+id +" name:"+ name + " surname" + surname + " " + " number" + number );
     }
+
+    @Override
+    public String toString() {
+        return "id:"+id +" name:"+ name + " surname" + surname + " " + " number" + number;
+    }
 }
