@@ -18,10 +18,10 @@ public class Menu {
             System.out.println("1 add contact");
             System.out.println("2 delete contact");
             System.out.println("3 delete all contact");
-            System.out.println("4 edit contact");
+            System.out.println("4 edit contact"); //11
             System.out.println("5 list contact");
             System.out.println("6 search contact to name");
-            System.out.println("7 search contact to number");
+            System.out.println("7 search contact to number"); //77
 
             String ansvear = scanner.nextLine();
             switch (ansvear) {
@@ -29,7 +29,7 @@ public class Menu {
                     System.exit(0);
                 }
                 case "1" -> {
-                    Contact contact = createContact();
+                    Contact contact = createContact(true,0L);
                     if (contact != null){
                         addContact(contact);
                     }else {
@@ -44,6 +44,7 @@ public class Menu {
                     phoneBook.deleteOllContact();
                 }
                 case "4" -> {
+                    editСontact();
                 }
                 case "5" -> {
                     printContact();
@@ -62,7 +63,7 @@ public class Menu {
 
     }
 
-    private Contact createContact () throws CreateContactExeption { //проверить если имя или фамилия пустые строки вывести ексепшен который нужно содать ()так же создать  его в пакете ексепшен)
+    private Contact createContact (Boolean autoGenerateId,Long id) throws CreateContactExeption { //проверить если имя или фамилия пустые строки вывести ексепшен который нужно содать ()так же создать  его в пакете ексепшен)
         System.out.println("Введите имя");
         String name = scanner.nextLine();
         if (name.isEmpty()){
@@ -90,7 +91,11 @@ public class Menu {
             }
         }
 
-        return new Contact(name,surname,phone);
+        if (autoGenerateId){
+            return new Contact(name,surname,phone);
+        }else {
+            return new Contact(id,name,surname,phone);
+        }
     }
 
     private void deleteContact (){ // дописать проверку что ввели именно число если не число обработать ексепшен
@@ -127,6 +132,26 @@ public class Menu {
         String name = scanner.nextLine();
         phoneBook.searchContact(name);
     }
+
+
+    private void editСontact (){
+        printContact();
+        System.out.println("Введите id контакта");
+        Long id = scanner.nextLong();
+        scanner.nextLine();
+        try {
+          Contact contact =   createContact(false,id);
+            phoneBook.editСontact(id,contact);
+        } catch (CreateContactExeption e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
+
 
 
 

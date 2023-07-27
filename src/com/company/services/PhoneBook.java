@@ -50,4 +50,15 @@ public class PhoneBook {
        }
 
    }
+
+   public void editСontact (Long id, Contact contact) {
+       int id_search = 0;
+       for (int i = 0; i < contacts.length; i++) {
+           if (contacts[i] != null) {
+               if (contacts[i].getId() == id) {
+                   contacts[i] = contact;
+               }
+           }
+       }
+   }
 }
